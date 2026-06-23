@@ -1,0 +1,54 @@
+```gitignore
+# Dependencies
+node_modules/
+
+# Astro
+.astro/
+
+# Build output
+dist/
+
+# Package manager caches
+.pnpm-store/
+.yarn/
+.npm/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Local editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Cloudflare / local deployment artifacts
+.wrangler/
+.dev.vars
+
+# Misc
+coverage/
+.cache/
+```
+
