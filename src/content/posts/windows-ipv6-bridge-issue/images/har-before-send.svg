@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="690" viewBox="0 0 1200 690">
+  <rect width="1200" height="690" fill="#f7f4ef"/>
+  <text x="600" y="48" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="28" font-weight="700" fill="#1f2933">HAR：这 202.543 秒究竟花在了哪里？</text>
+  <text x="600" y="80" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="17" fill="#616e7c">POST /backend-api/conversation/init</text>
+
+  <rect x="105" y="125" width="990" height="96" rx="15" fill="#c43d3d"/>
+  <text x="600" y="165" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="27" font-weight="700" fill="#ffffff">blocked  202.543 s</text>
+  <text x="600" y="197" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="17" fill="#ffe6e6">整段时间都发生在发送之前</text>
+  <line x1="105" y1="248" x2="1095" y2="248" stroke="#9aa5b1" stroke-width="2"/>
+  <circle cx="330" cy="248" r="8" fill="#52606d"/><circle cx="600" cy="248" r="8" fill="#52606d"/><circle cx="870" cy="248" r="8" fill="#52606d"/>
+  <text x="330" y="286" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="20" font-weight="700" fill="#1f2933">send = 0</text>
+  <text x="600" y="286" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="20" font-weight="700" fill="#1f2933">wait = 0</text>
+  <text x="870" y="286" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="20" font-weight="700" fill="#1f2933">receive = 0</text>
+  <text x="600" y="326" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="17" font-weight="600" fill="#b42318">不是服务器处理慢：浏览器尚未把请求送出去</text>
+
+  <rect x="70" y="375" width="330" height="220" rx="18" fill="#f3fff5" stroke="#238636" stroke-width="2"/>
+  <text x="235" y="414" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="23" font-weight="700" fill="#18752a">退出登录</text>
+  <text x="235" y="451" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="18" fill="#1f2933">47 个请求</text>
+  <text x="235" y="481" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="18" fill="#1f2933">47 / 47 为 HTTP/2 + IPv6</text>
+  <text x="235" y="511" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="18" fill="#1f2933">最大 blocked：0.933 ms</text>
+  <text x="235" y="550" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="19" font-weight="700" fill="#18752a">≥ 1 s：0 个</text>
+
+  <rect x="435" y="375" width="330" height="220" rx="18" fill="#fff7f7" stroke="#c43d3d" stroke-width="2"/>
+  <text x="600" y="414" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="23" font-weight="700" fill="#b42318">登录后 BAD</text>
+  <text x="600" y="451" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="18" fill="#1f2933">234 个请求</text>
+  <text x="600" y="481" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="18" fill="#1f2933">226 个完成项为 HTTP/2 + IPv6</text>
+  <text x="600" y="511" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="18" fill="#1f2933">最大 blocked：230.275 s</text>
+  <text x="600" y="550" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="19" font-weight="700" fill="#b42318">blocked ≥ 100 s：44 个</text>
+
+  <rect x="800" y="375" width="330" height="220" rx="18" fill="#f3f7ff" stroke="#3056d3" stroke-width="2"/>
+  <text x="965" y="414" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="23" font-weight="700" fill="#2446b8">IPv4 冷缓存</text>
+  <text x="965" y="451" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="18" fill="#1f2933">481 个请求</text>
+  <text x="965" y="481" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="18" fill="#1f2933">480 个 HTTP/2 + IPv4</text>
+  <text x="965" y="511" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="18" fill="#1f2933">最大 blocked：87.774 ms</text>
+  <text x="965" y="550" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="19" font-weight="700" fill="#2446b8">blocked ≥ 1 s：0 个</text>
+
+  <text x="600" y="650" text-anchor="middle" font-family="'Segoe UI','Microsoft YaHei UI','Noto Sans CJK SC',sans-serif" font-size="15" fill="#616e7c">由原始 HAR 脱敏提取；不包含 header、query、cookie、地址或响应正文</text>
+</svg>
