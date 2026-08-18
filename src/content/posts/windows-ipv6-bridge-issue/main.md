@@ -6,8 +6,6 @@ draft: false
 tags: ["windows", "networking", "debugging"]
 ---
 
-# 屎山难以支撑樱桃： Windows 11 上的 IPv6 网络栈奇葩 bug 历险记
-
 ## 问题始于异常的 ChatGPT 网页版体验
 
 事情的起点很普通：ChatGPT 网页版在我的 Windows 11 电脑上有问题，新对话无法发送信息（过一会以后报错），点开已有对话也一直转圈，加载 project 以及对话列表的速度都慢得异常。
