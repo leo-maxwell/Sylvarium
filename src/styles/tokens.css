@@ -1,0 +1,52 @@
+:root {
+  --color-page: #f3f1eb;
+  --color-text: #222320;
+
+  --color-glass: rgb(255 255 255 / 0.65);
+  --color-glass-hover: rgb(255 255 255 / 0.7);
+  --color-border: rgb(0 0 0 / 0.08);
+
+  --navbar-height: 3.75rem;
+  --content-width: 72rem;
+
+  --radius-sm: 0.5rem;
+
+  /* Unified width/height tokens */
+  --height-top-banner: 14rem;
+  --site-gutter: 22px;
+  --site-shell-width: 72rem;
+
+  /* Unified spacing tokens */
+  --spacing-btn-tiles: 16px;
+
+  /* Fonts */
+  --font-content: "Sylvarium Georgia", "Sylvarium STZhongsong", Georgia, serif;
+  --font-ui: "Sylvarium Myriad Pro", "Sylvarium MHei PRC", sans-serif;
+  --font-sans-secondary: "Sylvarium IBM Plex Sans", "Sylvarium Hiragino Sans", sans-serif;
+  --font-mono: "Sylvarium IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* NavBar */
+  --navbar-button-text-color: rgb(60 60 60);
+  --navbar-button-gap: 38px;
+  --navbar-button-font-size: 14px;
+  --navbar-icon-size: 18px;
+  --navbar-icon-stroke-width: 1.7;
+
+  /* From apple.com */
+  --apple-navbar-height: 44px;
+  --apple-navbar-height-mobile: 48px;
+  --apple-navbar-bg-color: rgb(245 245 247 / 0.8);
+  --apple-navbar-backdrop: saturate(180%) blur(20px);
+  --apple-navbar-inner-horizontal-padding: 22px;
+  --apple-navbar-button-horizontal-padding: 8px;
+  --apple-navbar-button-text-color: rgb(29 29 31);
+  --apple-navbar-button-text-color-hover: rgb(0 0 0);
+  --apple-navbar-button-font-size: 12.5px;
+  --apple-navbar-button-font-weight: 400;
+  --apple-navbar-button-line-height: 1;
+  --apple-navbar-button-letter-spacing: -0.01em;
+
+  /* From Apple */
+  --apple-corner-radius: 16px;
+
+}

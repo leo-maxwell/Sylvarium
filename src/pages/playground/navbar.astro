@@ -1,0 +1,165 @@
+---
+import PlaygroundLayout from "@/layouts/PlaygroundLayout.astro";
+import NavBar from "@/components/navigation/NavBar.astro";
+---
+
+<PlaygroundLayout title="Navbar Playground">
+  <header class="demo-banner">
+    <div>
+      <p>Sylvarium</p>
+      <h1>青枝录</h1>
+      <p>Temporary banner</p>
+    </div>
+  </header>
+  <NavBar />
+
+  <main class="demo-content">
+    <article>
+      <p class="eyebrow">PLAYGROUND</p>
+
+      <h1>Testing the navigation bar</h1>
+
+      <p style="font-family: var(--font-content);">
+        This page exists only to give us 华文中宋中文测试永字八法 enough content
+        to scroll, inspect the glass effect, and experiment with the navigation
+        bar.
+      </p>
+
+      <h2>Lorem ipsum</h2>
+
+      <p style="font-family: var(--font-mono);">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        habitant morbi tristique senectus et netus et malesuada fames ac turpis
+        egestas.
+      </p>
+
+      <h2>Lorem ipsum</h2>
+
+      <p style="font-family: var(--font-sans-secondary);">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        habitant morbi tristique senectus et netus et malesuada fames ac turpis
+        egestas.
+      </p>
+
+      <h2>Lorem ipsum</h2>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        habitant morbi tristique senectus et netus et malesuada fames ac turpis
+        egestas.
+      </p>
+
+      <h2>Lorem ipsum</h2>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        habitant morbi tristique senectus et netus et malesuada fames ac turpis
+        egestas.
+      </p>
+
+      <h2>Lorem ipsum</h2>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        habitant morbi tristique senectus et netus et malesuada fames ac turpis
+        egestas.
+      </p>
+
+      <h2>Lorem ipsum</h2>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        habitant morbi tristique senectus et netus et malesuada fames ac turpis
+        egestas.
+      </p>
+
+      <h2>Lorem ipsum</h2>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+        habitant morbi tristique senectus et netus et malesuada fames ac turpis
+        egestas.
+      </p>
+
+      <p>
+        Scroll down. The banner should disappear above the viewport, while the
+        navigation bar remains attached to the top.
+      </p>
+
+      <h2>Keep scrolling</h2>
+
+      <p>
+        We deliberately need a ridiculously long page here. This is not real
+        content. Its only job is to give the navigation bar something to scroll
+        over.
+      </p>
+
+      <div class="spacer"></div>
+
+      <h2>Still here?</h2>
+
+      <p>Good. The navigation bar should still be visible at the top.</p>
+    </article>
+  </main>
+</PlaygroundLayout>
+
+<style>
+  .demo-banner {
+    min-height: var(--height-top-banner);
+
+    display: grid;
+    place-items: center;
+
+    padding: 3rem, 1rem;
+
+    text-align: center;
+
+    background:
+      radial-gradient(
+        circle at 30% 20%,
+        rgb(255 255 255 / 0.9),
+        transparent 35%
+      ),
+      linear-gradient(135deg, #d9e4d1, #b7c9ac);
+  }
+
+  .demo-banner p {
+    margin: 0.5rem;
+  }
+
+  .demo-banner h1 {
+    margin: 0;
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 500;
+  }
+
+  .demo-content {
+    width: min(100% - 2rem, 48rem);
+
+    margin-inline: auto;
+    padding-block: 5rem;
+  }
+
+  .demo-content h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.1;
+  }
+
+  .demo-content h2 {
+    margin-top: 4rem;
+  }
+
+  .demo-content p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.15rem;
+  }
+
+  .spacer {
+    height: 70vhl;
+  }
+</style>

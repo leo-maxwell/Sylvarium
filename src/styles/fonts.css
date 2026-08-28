@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "Sylvarium Myriad Pro";
+    src: url("../assets/fonts/myriad-pro/myriad-pro-regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Sylvarium MHei PRC";
+    src: url("../assets/fonts/mhei-prc/mhei-prc-medium.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Sylvarium Georgia";
+    src: url("../assets/fonts/georgia/Georgia.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Sylvarium STZhongsong";
+    src: url("../assets/fonts/stzhongsong/stzhongsong.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Sylvarium IBM Plex Sans";
+    src: url("../assets/fonts/ibm-plex-sans/ibm-plex-sans.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 100 700;
+    font-stretch: 75% 100%;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Sylvarium Hiragino Sans";
+    src: url("../assets/fonts/hiragino/hiragino-sans-w3.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Sylvarium IBM Plex Mono";
+    src: url("../assets/fonts/ibm-plex-mono/ibm-plex-mono-regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
