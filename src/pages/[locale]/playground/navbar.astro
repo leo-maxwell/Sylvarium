@@ -1,9 +1,18 @@
 ---
 import PlaygroundLayout from "@/layouts/PlaygroundLayout.astro";
 import NavBar from "@/components/navigation/NavBar.astro";
+import { requireRouteLocale, routeLocales } from "@/i18n/locales";
+
+export function getStaticPaths() {
+  return routeLocales.map(locale => ({
+    params: { locale },
+  }));
+}
+
+const locale = requireRouteLocale(Astro.currentLocale);
 ---
 
-<PlaygroundLayout title="Navbar Playground">
+<PlaygroundLayout title="Navbar Playground" locale={locale}>
   <header class="demo-banner">
     <div>
       <p>Sylvarium</p>
@@ -11,7 +20,7 @@ import NavBar from "@/components/navigation/NavBar.astro";
       <p>Temporary banner</p>
     </div>
   </header>
-  <NavBar />
+  <NavBar locale={locale} />
 
   <main class="demo-content">
     <article>

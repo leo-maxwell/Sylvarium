@@ -1,23 +1,34 @@
 ---
 import { Languages, SunMoon } from "@lucide/astro";
+import type { RouteLocale } from "@/i18n/locales";
+import { useTranslations } from "@/i18n";
+
+interface Props {
+  locale: RouteLocale;
+}
+
+const { locale } = Astro.props;
+const strings = useTranslations(locale);
 ---
 
-<nav class="navbar" aria-label="Primary navigation">
+<nav class="navbar" aria-label={strings.a11y.primaryNavigation}>
   <div class="navbar-inner">
     <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#articles">Articles</a>
-      <a href="#about">About</a>
+      <a href="#home">{strings.nav.home}</a>
+      <a href="#articles">{strings.nav.articles}</a>
+      <a href="#subscription">{strings.nav.subscription}</a>
+      <a href="#blogroll">{strings.nav.blogroll}</a>
+      <a href="#about">{strings.nav.about}</a>
     </div>
 
     <div class="nav-utilities">
-      <button type="button" aria-label="Switch language"
+      <button type="button" aria-label={strings.a11y.switchLanguage}
         ><Languages
           size="var(--navbar-icon-size)"
           stroke-width="var(--navbar-icon-stroke-width)"
         /></button
       >
-      <button type="button" aria-label="Switch theme"
+      <button type="button" aria-label={strings.a11y.switchTheme}
         ><SunMoon
           size="var(--navbar-icon-size)"
           stroke-width="var(--navbar-icon-stroke-width)"

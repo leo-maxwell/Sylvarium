@@ -1,15 +1,19 @@
 ---
 import "@/styles/global.css";
+import { htmlLangByRouteLocale, type RouteLocale } from "@/i18n/locales";
 
 interface Props {
   title?: string;
+  locale: RouteLocale;
 }
 
-const { title = "Sylvarium Playground" } = Astro.props;
+const { title = "Sylvarium Playground", locale } = Astro.props;
+
+const htmlLang = htmlLangByRouteLocale[locale];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

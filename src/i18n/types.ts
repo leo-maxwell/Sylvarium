@@ -1,11 +1,14 @@
 export interface UIStrings {
   nav: {
     home: string;
+    articles: string;
+    subscription: string;
+    blogroll: string;
+    about: string;
+    search: string;
     posts: string;
     tags: string;
-    about: string;
     archives: string;
-    search: string;
   };
   post: {
     publishedAt: string;
@@ -52,6 +55,9 @@ export interface UIStrings {
     searchDesc: string;
   };
   a11y: {
+    primaryNavigation: string;
+    switchLanguage: string;
+    switchTheme: string;
     skipToContent: string;
     openMenu: string;
     closeMenu: string;

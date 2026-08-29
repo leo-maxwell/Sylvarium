@@ -14,3 +14,13 @@ export function isRouteLocale(
 ): locale is RouteLocale {
   return routeLocales.some(routeLocale => routeLocale === locale);
 }
+
+export function requireRouteLocale(
+  locale: string | undefined
+): RouteLocale {
+  if (!isRouteLocale(locale)) {
+    throw new Error(`Unsupported route locale: ${locale ?? "undefined"}`);
+  }
+
+  return locale;
+}

@@ -3,6 +3,9 @@ import type { UIStrings } from "../types";
 export default {
   nav: {
     home: "Home",
+    articles: "Articles",
+    subscription: "Subscription",
+    blogroll: "Blogroll",
     posts: "Posts",
     tags: "Tags",
     about: "About",
@@ -54,6 +57,9 @@ export default {
     searchDesc: "Search any article ...",
   },
   a11y: {
+    primaryNavigation: "Primary navigation",
+    switchLanguage: "Switch language",
+    switchTheme: "Switch theme",
     skipToContent: "Skip to content",
     openMenu: "Open menu",
     closeMenu: "Close menu",
