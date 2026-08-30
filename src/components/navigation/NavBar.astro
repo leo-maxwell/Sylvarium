@@ -22,18 +22,101 @@ const strings = useTranslations(locale);
     </div>
 
     <div class="nav-utilities">
-      <button type="button" aria-label={strings.a11y.switchLanguage}
+      <button
+        class="language-trigger"
+        type="button"
+        aria-label={strings.a11y.switchLanguage}
+        popovertarget="language-menu"
         ><Languages
           size="var(--navbar-icon-size)"
           stroke-width="var(--navbar-icon-stroke-width)"
         /></button
       >
-      <button type="button" aria-label={strings.a11y.switchTheme}
+
+      <div
+        id="language-menu"
+        class="dropdown-menu language-menu"
+        popover="auto"
+      >
+        <fieldset class="dropdown-options">
+          <legend class="sr-only">
+            {strings.a11y.switchLanguage}
+          </legend>
+          <label class="dropdown-item">
+            <input
+              class="dropdown-radio"
+              type="radio"
+              name="language-preview"
+              value="en"
+              checked={locale === "en"}
+            />
+            <span lang="en">English</span>
+            <span class="dropdown-check" aria-hidden="true">✓</span>
+          </label>
+
+          <label class="dropdown-item">
+            <input
+              class="dropdown-radio"
+              type="radio"
+              name="language-preview"
+              value="sc"
+              checked={locale === "sc"}
+            />
+            <span lang="zh-Hans">简体中文</span>
+            <span class="dropdown-check" aria-hidden="true">✓</span>
+          </label>
+        </fieldset>
+      </div>
+      <button
+        class="theme-trigger"
+        type="button"
+        aria-label={strings.a11y.switchTheme}
+        popovertarget="theme-menu"
         ><SunMoon
           size="var(--navbar-icon-size)"
           stroke-width="var(--navbar-icon-stroke-width)"
         /></button
       >
+      <div id="theme-menu" class="dropdown-menu theme-menu" popover="auto">
+        <fieldset class="dropdown-options">
+          <legend class="sr-only">
+            {strings.a11y.switchTheme}
+          </legend>
+          <label class="dropdown-item">
+            <input
+              class="dropdown-radio"
+              type="radio"
+              name="theme-preview"
+              value="system"
+              checked
+            />
+            <span>System</span>
+            <span class="dropdown-check" aria-hidden="true">✓</span>
+          </label>
+
+          <label class="dropdown-item">
+            <input
+              class="dropdown-radio"
+              type="radio"
+              name="theme-preview"
+              value="light"
+            />
+            <span>Light</span>
+            <span class="dropdown-check" aria-hidden="true">✓</span>
+          </label>
+
+          <label class="dropdown-item">
+            <input
+              class="dropdown-radio"
+              type="radio"
+              name="theme-preview"
+              value="dark"
+            />
+            <span>Dark</span>
+            <span class="dropdown-check" aria-hidden="true">✓</span>
+          </label>
+        </fieldset>
+      </div>
     </div>
   </div>
 </nav>
@@ -109,5 +192,125 @@ const strings = useTranslations(locale);
   button:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 2px;
+  }
+
+  .dropdown-menu {
+    min-width: 10rem;
+    margin: auto;
+
+    color: var(--color-text);
+    background: rgb(220 220 220 / 0.6);
+    backdrop-filter: var(--apple-navbar-backdrop);
+    -webkit-backdrop-filter: var(--apple-navbar-backdrop);
+
+    /* just a hint of rounded corner is enough */
+    border-radius: 0 0 1px 1px;
+
+    font-family: var(--font-ui);
+  }
+
+  @keyframes dropdown-menu-enter {
+    from {
+      opacity: 0;
+      transform: translateY(-3px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .dropdown-menu:popover-open {
+    animation: dropdown-menu-enter 140ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dropdown-menu:popover-open {
+      animation: none;
+    }
+  }
+
+  .dropdown-options {
+    display: grid;
+    gap: 0.125rem;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .dropdown-item {
+    min-height: 2rem;
+    padding-inline: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1rem;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+
+    transition: background-color 90ms ease-out;
+  }
+
+  .dropdown-item:hover {
+    /*background: var(--color-glass-hover);*/
+    background: rgb(255 255 255 / 0.25);
+  }
+
+  .dropdown-item:active {
+    background-color: rgb(0 0 0 / 0.09);
+  }
+
+  .dropdown-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .dropdown-check {
+    visibility: hidden;
+    text-align: center;
+  }
+
+  .dropdown-radio:checked ~ .dropdown-check {
+    visibility: visible;
+  }
+
+  .dropdown-item:has(.dropdown-radio:focus-visible) {
+    outline: 2px solid currentColor;
+    outline-offset: 1px;
+  }
+
+  .language-trigger {
+    anchor-name: --language-menu-trigger;
+  }
+
+  .theme-trigger {
+    anchor-name: --theme-menu-trigger;
+  }
+
+  @supports (position-area: block-end span-inline-start) {
+    .dropdown-menu {
+      position: fixed;
+
+      /* positioned under the trigger, takes up the room at the left of trigger */
+      /* `justify-self: end` to align the right edge to the trigger */
+      position-area: block-end span-inline-start;
+      justify-self: end;
+      align-self: start;
+
+      /* sticks to the navbar */
+      margin: 0 0 0 0;
+
+      /* in case the room under the trigger is not enough, flip it to the top */
+      position-try-fallbacks: flip-block;
+    }
+
+    .language-menu {
+      position-anchor: --language-menu-trigger;
+    }
+
+    .theme-menu {
+      position-anchor: --theme-menu-trigger;
+    }
   }
 </style>
