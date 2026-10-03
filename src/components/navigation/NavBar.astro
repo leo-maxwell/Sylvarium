@@ -11,6 +11,11 @@ const { locale } = Astro.props;
 const strings = useTranslations(locale);
 ---
 
+<!--
+TODO: immersive scroll bar
+TODO: vertically align the text and icons
+TODO: narrower distances between icons
+-->
 <nav class="navbar" aria-label={strings.a11y.primaryNavigation}>
   <div class="navbar-inner">
     <div class="nav-links">
@@ -139,9 +144,9 @@ const strings = useTranslations(locale);
 
   .navbar-inner {
     width: 100%;
-    max-width: var(--site-shell-width);
+    max-width: var(--site-shell-max-width);
     margin-inline: auto;
-    padding-inline: var(--site-gutter);
+    padding-inline: var(--site-shell-gutter);
 
     height: 100%;
 
@@ -185,7 +190,7 @@ const strings = useTranslations(locale);
 
   a:hover,
   button:hover {
-    color: var(--apple-navbar-text-color-hover);
+    color: var(--apple-navbar-button-text-color-hover);
   }
 
   a:focus-visible,

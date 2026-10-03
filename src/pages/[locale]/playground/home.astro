@@ -1,6 +1,7 @@
 ---
-import PlaygroundLayout from "@/layouts/PlaygroundLayout.astro";
+import PlaygroundLayout from "@/layouts/SiteLayout.astro";
 import NavBar from "@/components/navigation/NavBar.astro";
+import SiteBanner from "@/components/SiteBanner.astro";
 import { requireRouteLocale, routeLocales } from "@/i18n/locales";
 
 export function getStaticPaths() {
@@ -12,14 +13,9 @@ export function getStaticPaths() {
 const locale = requireRouteLocale(Astro.currentLocale);
 ---
 
+<!-- TODO: human readable width design adaptation -->
 <PlaygroundLayout title="Navbar Playground" locale={locale}>
-  <header class="demo-banner">
-    <div>
-      <p>Sylvarium</p>
-      <h1>青枝录</h1>
-      <p>Temporary banner</p>
-    </div>
-  </header>
+  <SiteBanner />
   <NavBar locale={locale} />
 
   <main class="demo-content">
@@ -113,37 +109,11 @@ const locale = requireRouteLocale(Astro.currentLocale);
 </PlaygroundLayout>
 
 <style>
-  .demo-banner {
-    min-height: var(--height-top-banner);
-
-    display: grid;
-    place-items: center;
-
-    padding: 3rem, 1rem;
-
-    text-align: center;
-
-    background:
-      radial-gradient(
-        circle at 30% 20%,
-        rgb(255 255 255 / 0.9),
-        transparent 35%
-      ),
-      linear-gradient(135deg, #d9e4d1, #b7c9ac);
-  }
-
-  .demo-banner p {
-    margin: 0.5rem;
-  }
-
-  .demo-banner h1 {
-    margin: 0;
-    font-size: clamp(3rem, 10vw, 7rem);
-    font-weight: 500;
-  }
-
   .demo-content {
-    width: min(100% - 2rem, 48rem);
+    width: min(
+      calc(100% - 2 * var(--site-reading-gutter)),
+      var(--site-reading-max-width)
+    );
 
     margin-inline: auto;
     padding-block: 5rem;

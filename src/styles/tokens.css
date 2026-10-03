@@ -13,11 +13,17 @@
 
   /* Unified width/height tokens */
   --height-top-banner: 14rem;
-  --site-gutter: 22px;
-  --site-shell-width: 72rem;
+  /* unified horizontal width model parameters */
+  --site-banner-gutter: clamp(1.5rem, 5vw, 6rem);
+  --site-shell-max-width: 72rem;
+  --site-shell-gutter: 22px;
+  --site-reading-max-width: 48rem;
+  --site-reading-gutter: 1rem;
+
 
   /* Unified spacing tokens */
   --spacing-btn-tiles: 16px;
+
 
   /* Fonts */
   --font-content: "Sylvarium Georgia", "Sylvarium STZhongsong", Georgia, serif;

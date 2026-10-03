@@ -1,0 +1,95 @@
+---
+import { Image } from "astro:assets";
+import landscape from "@/assets/images/banner/home-landscape.png";
+---
+
+<!-- TODO: shadow improvement: use visually smooth gradient transition, refer to Google MD -->
+<header class="site-banner">
+  <Image
+    class="banner-image"
+    src={landscape}
+    alt=""
+    loading="eager"
+    fetchpriority="high"
+  />
+
+  <div class="banner-frost" aria-hidden="true"></div>
+
+  <div class="banner-content">
+    <p class="banner-name-zh" lang="zh-Hans">青枝录</p>
+    <p class="banner-name-en" lang="en">Sylvarium</p>
+  </div>
+</header>
+
+<style>
+  .site-banner {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    height: auto;
+    aspect-ratio: auto;
+    background: var(--color-page);
+  }
+  .banner-image {
+    position: relative;
+    display: block;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+  }
+  .banner-frost {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: rgb(243 241 235 / 0.3);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+
+    -webkit-mask-image: linear-gradient(
+      to right,
+      black 0%,
+      black 20%,
+      transparent 38%
+    );
+    mask-image: linear-gradient(to right, black 0%, black 20%, transparent 38%);
+  }
+  .banner-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin-inline: 0;
+    padding-inline: var(--site-banner-gutter);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: var(--color-text);
+  }
+  .banner-name-en {
+    margin: 0 3rem 0.6rem;
+    font-family: var(--font-sans-secondary);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    letter-spacing: 0.18rem;
+    text-shadow:
+      0 1px 2px rgb(20 30 25 / 0.14),
+      0 4px 12px rgb(20 30 25 / 0.08);
+  }
+  .banner-name-zh {
+    margin: 0;
+    font-family: var(--font-sans-secondary);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.1rem;
+    text-shadow:
+      0 1px 2px rgb(20 30 25 / 0.14),
+      0 4px 12px rgb(20 30 25 / 0.08);
+  }
+</style>
