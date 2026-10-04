@@ -10,6 +10,8 @@ const posts = defineCollection({
   schema: ({ image }) =>
     z.object({
       author: z.string().default(config.site.author),
+      category: z.string().trim().min(1),
+      cover: image().optional(),
       pubDatetime: z.date(),
       modDatetime: z.date().optional().nullable(),
       title: z.string(),

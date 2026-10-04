@@ -1,5 +1,7 @@
 ---
 import "@/styles/global.css";
+import SiteBanner from "@/components/SiteBanner.astro";
+import NavBar from "@/components/navigation/NavBar.astro";
 import { htmlLangByRouteLocale, type RouteLocale } from "@/i18n/locales";
 
 interface Props {
@@ -7,7 +9,8 @@ interface Props {
   locale: RouteLocale;
 }
 
-const { title = "Sylvarium Playground", locale } = Astro.props;
+// TODO: different title with different language settings
+const { title = "Sylvarium 青枝录", locale } = Astro.props;
 
 const htmlLang = htmlLangByRouteLocale[locale];
 ---
@@ -21,6 +24,8 @@ const htmlLang = htmlLangByRouteLocale[locale];
   </head>
 
   <body>
+    <SiteBanner />
+    <NavBar locale={locale} />
     <slot />
   </body>
 </html>
