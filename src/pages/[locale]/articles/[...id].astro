@@ -1,0 +1,86 @@
+---
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { getPublishedArticles } from "@/lib/articles";
+import { routeLocales, type RouteLocale } from "@/i18n/locales";
+
+export async function getStaticPaths() {
+  const articles = await getPublishedArticles();
+
+  return routeLocales.flatMap(locale =>
+    articles.map(article => ({
+      params: {
+        locale,
+        id: article.id,
+      },
+      props: {
+        article,
+        locale,
+      },
+    }))
+  );
+}
+
+interface Props {
+  article: CollectionEntry<"articles">;
+  locale: RouteLocale;
+}
+
+const { article, locale } = Astro.props;
+
+const { Content } = await render(article);
+---
+
+<!--
+TODO: add multi-language support
+-->
+<SiteLayout title={`${article.data.title} | Sylvarium`} locale={locale}>
+  <main class="article-main">
+    <article lang="zh-Hans">
+      <header class="article-header">
+        <h1>{article.data.title}</h1>
+        <p>{article.data.subtitle}</p>
+      </header>
+
+      <div class="prose article-body">
+        <Content />
+      </div>
+    </article>
+  </main>
+</SiteLayout>
+
+<style>
+  .article-main {
+    max-width: var(--site-reading-max-width);
+    margin-inline: auto;
+    padding-block: 2rem 4rem;
+  }
+  .article-header {
+    margin-block: 2rem;
+  }
+  h1 {
+    font-family: var(--font-content);
+    font-size: 2rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+  .article-header p {
+    margin-top: 1rem;
+    font-family: var(--font-content);
+    overflow-wrap: anywhere;
+  }
+  .article-body {
+    max-width: none;
+    font-family: var(--font-content);
+    overflow-wrap: anywhere;
+  }
+  .article-body :global(img) {
+    max-width: 100%;
+    height: auto;
+  }
+  .article-body :global(table) {
+    display: block;
+    overflow-x: auto;
+  }
+</style>

@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getPublishedArticles } from "@/lib/articles";
 import ArticleCard from "./ArticleCard.astro";
 import { useTranslations } from "@/i18n";
 import type { RouteLocale } from "@/i18n/locales";
@@ -11,15 +11,7 @@ interface Props {
 const { locale } = Astro.props;
 const strings = useTranslations(locale);
 
-const now = new Date();
-
-const articles = await getCollection("articles", ({ data }) => {
-  return !data.draft && data.pubDatetime <= now;
-});
-
-articles.sort((a, b) => {
-  return b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime();
-});
+const articles = await getPublishedArticles();
 ---
 
 <section id="articles" aria-labelledby="articles-heading">
@@ -29,11 +21,11 @@ articles.sort((a, b) => {
 
   <ul class="article-list">
     {
-      articles.map(article => {
+      articles.map(article => (
         <li>
           <ArticleCard article={article} locale={locale} />
-        </li>;
-      })
+        </li>
+      ))
     }
   </ul>
 </section>

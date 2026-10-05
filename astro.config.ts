@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { defaultRouteLocale, routeLocales } from "./src/i18n/locales";
 
 export default defineConfig({
-  site: "blog.leo-maxwell.com/",
+  site: "https://blog.leo-maxwell.com/",
   output: "static",
   trailingSlash: "always",
 
