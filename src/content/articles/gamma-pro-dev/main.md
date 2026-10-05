@@ -1,8 +1,9 @@
 ---
 title: "初入 Windows 小工具开发——为什么微软就是没做对"
-description: "微软混乱的 UI 框架和暧昧不清的兼容性选择"
+subtitle: "微软混乱的 UI 框架和暧昧不清的兼容性选择"
 pubDatetime: 2026-06-21T00:00:00Z
 draft: false
+category: "原创项目"
 tags: ["windows dev", "personal project"]
 ---
 

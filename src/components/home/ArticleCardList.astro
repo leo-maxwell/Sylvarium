@@ -3,4 +3,57 @@ import { getCollection } from "astro:content";
 import ArticleCard from "./ArticleCard.astro";
 import { useTranslations } from "@/i18n";
 import type { RouteLocale } from "@/i18n/locales";
+
+interface Props {
+  locale: RouteLocale;
+}
+
+const { locale } = Astro.props;
+const strings = useTranslations(locale);
+
+const now = new Date();
+
+const articles = await getCollection("articles", ({ data }) => {
+  return !data.draft && data.pubDatetime <= now;
+});
+
+articles.sort((a, b) => {
+  return b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime();
+});
 ---
+
+<section id="articles" aria-labelledby="articles-heading">
+  <h1 id="articles-heading">
+    {strings.home.recentPosts}
+  </h1>
+
+  <ul class="article-list">
+    {
+      articles.map(article => {
+        <li>
+          <ArticleCard article={article} locale={locale} />
+        </li>;
+      })
+    }
+  </ul>
+</section>
+
+<style>
+  section {
+    scroll-margin-top: calc(var(--apple-navbar-height) + 1rem);
+  }
+  h1 {
+    margin: 0 0 1rem;
+    font-family: var(--font-ui);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .article-list {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+</style>

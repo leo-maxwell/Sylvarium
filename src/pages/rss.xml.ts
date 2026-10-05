@@ -5,7 +5,7 @@ import { getPostUrl } from "@/utils/getPostPaths";
 import config from "@/config";
 
 export async function GET() {
-  const posts = await getCollection("posts");
+  const posts = await getCollection("articles");
   const sortedPosts = getSortedPosts(posts);
 
   return rss({

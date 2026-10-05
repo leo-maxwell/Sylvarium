@@ -1,8 +1,9 @@
 ---
 title: "屎山难以支撑樱桃： Windows 11 上的 IPv6 网络栈奇葩 bug 历险记"
-description: "一次从 ChatGPT 页面卡顿一路掉进 HTTP/2、IPv6 LSOv2、Hyper-V、NDIS 和 Windows 内核签名的排障经历"
+subtitle: "一次从 ChatGPT 页面卡顿一路掉进 HTTP/2、IPv6 LSOv2、Hyper-V、NDIS 和 Windows 内核签名的排障经历"
 pubDatetime: 2026-08-18T00:00:00Z
 draft: false
+category: "奇葩故障"
 tags: ["windows", "networking", "debugging"]
 ---
 

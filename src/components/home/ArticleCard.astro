@@ -4,17 +4,17 @@ import type { CollectionEntry } from "astro:content";
 import { htmlLangByRouteLocale, type RouteLocale } from "@/i18n/locales";
 
 interface Props {
-  post: CollectionEntry<"posts">;
+  article: CollectionEntry<"articles">;
   locale: RouteLocale;
 }
 
-const { post, locale } = Astro.props;
+const { article, locale } = Astro.props;
 const { title, description, pubDatetime, category, tags, cover, timezone } =
-  post.data;
+  article.data;
 
 const basePath = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 
-const articlePath = post.id
+const articlePath = article.id
   .split("/")
   .map(segment => encodeURIComponent(segment))
   .join("/");

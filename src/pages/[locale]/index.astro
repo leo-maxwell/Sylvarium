@@ -1,0 +1,15 @@
+---
+import HomeLayout from "@/layouts/HomeLayout.astro";
+import { requireRouteLocale, routeLocales } from "@/i18n/locales";
+
+export function getStaticPaths() {
+  return routeLocales.map(locale => ({
+    params: { locale },
+  }));
+}
+
+const locale = requireRouteLocale(Astro.params.locale);
+---
+
+<!-- TODO: human readable width design adaptation -->
+<HomeLayout locale={locale} />

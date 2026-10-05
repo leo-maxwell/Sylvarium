@@ -1,0 +1,27 @@
+---
+import SiteLayout from "./SiteLayout.astro";
+import ArticleCardList from "@/components/home/ArticleCardList.astro";
+import type { RouteLocale } from "@/i18n/locales";
+
+interface Props {
+  title?: string;
+  locale: RouteLocale;
+}
+
+const { title, locale } = Astro.props;
+---
+
+<SiteLayout title={title} locale={locale}>
+  <main id="home" class="home-content">
+    <ArticleCardList locale={locale} />
+    <slot />
+  </main>
+</SiteLayout>
+
+<style>
+  .home-content {
+    max-width: var(--site-shell-max-width);
+    margin-inline: auto;
+    padding-block: 2.5rem, 4rem;
+  }
+</style>

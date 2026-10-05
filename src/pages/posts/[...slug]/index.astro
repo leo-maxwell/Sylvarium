@@ -17,7 +17,7 @@ import AdjacentPostNav from "./_components/AdjacentPostNav.astro";
 import config from "@/config";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts");
+  const posts = await getCollection("articles");
   const sortedPosts = getSortedPosts(posts);
 
   return sortedPosts.map((post, index) => ({
