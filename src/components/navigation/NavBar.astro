@@ -1,7 +1,9 @@
 ---
-import { Languages, SunMoon } from "@lucide/astro";
+import { Languages, SunMoon, Check } from "@lucide/astro";
+import { getLanguageLinks } from "@/i18n/routing";
 import type { RouteLocale } from "@/i18n/locales";
 import { useTranslations } from "@/i18n";
+import { getRelativeLocaleUrl } from "astro:i18n";
 
 interface Props {
   locale: RouteLocale;
@@ -9,6 +11,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const strings = useTranslations(locale);
+const languageLinks = getLanguageLinks(Astro.url.pathname, locale);
 ---
 
 <!--
@@ -17,15 +20,16 @@ TODO: vertically align the text and icons
 TODO: narrower distances between icons
 TODO: switch to better checkmark icon in dropdown menu
 TODO: dropdown menu z-index adjustment: not in the same level as background
+TODO: add dark theme support
 -->
 <nav class="navbar" aria-label={strings.a11y.primaryNavigation}>
   <div class="navbar-inner">
     <div class="nav-links">
-      <a href="#home">{strings.nav.home}</a>
-      <a href="#articles">{strings.nav.articles}</a>
+      <a href={getRelativeLocaleUrl(locale, "")}>{strings.nav.home}</a>
+      <!-- <a href="#articles">{strings.nav.articles}</a>
       <a href="#subscription">{strings.nav.subscription}</a>
       <a href="#blogroll">{strings.nav.blogroll}</a>
-      <a href="#about">{strings.nav.about}</a>
+      <a href="#about">{strings.nav.about}</a> -->
     </div>
 
     <div class="nav-utilities">
@@ -45,36 +49,29 @@ TODO: dropdown menu z-index adjustment: not in the same level as background
         class="dropdown-menu language-menu"
         popover="auto"
       >
-        <fieldset class="dropdown-options">
-          <legend class="sr-only">
-            {strings.a11y.switchLanguage}
-          </legend>
-          <label class="dropdown-item">
-            <input
-              class="dropdown-radio"
-              type="radio"
-              name="language-preview"
-              value="en"
-              checked={locale === "en-au"}
-            />
-            <span lang="en">English (AU)</span>
-            <span class="dropdown-check" aria-hidden="true">✓</span>
-          </label>
-
-          <label class="dropdown-item">
-            <input
-              class="dropdown-radio"
-              type="radio"
-              name="language-preview"
-              value="sc"
-              checked={locale === "zh-hans"}
-            />
-            <span lang="zh-Hans">简体中文</span>
-            <span class="dropdown-check" aria-hidden="true">✓</span>
-          </label>
-        </fieldset>
+        <div
+          class="dropdown-options"
+          role="group"
+          aria-label={strings.a11y.switchLanguage}
+        >
+          {
+            languageLinks.map(option => (
+              <a
+                class="dropdown-item"
+                href={option.href}
+                lang={option.lang}
+                aria-current={locale === option.locale ? "true" : undefined}
+              >
+                <span>{option.label}</span>
+                <span class="dropdown-check" aria-hidden="true">
+                  <Check size={14} stroke-width={1.7} />
+                </span>
+              </a>
+            ))
+          }
+        </div>
       </div>
-      <button
+      <!-- <button
         class="theme-trigger"
         type="button"
         aria-label={strings.a11y.switchTheme}
@@ -123,7 +120,7 @@ TODO: dropdown menu z-index adjustment: not in the same level as background
             <span class="dropdown-check" aria-hidden="true">✓</span>
           </label>
         </fieldset>
-      </div>
+      </div> -->
     </div>
   </div>
 </nav>
@@ -148,7 +145,7 @@ TODO: dropdown menu z-index adjustment: not in the same level as background
     width: 100%;
     max-width: var(--site-shell-max-width);
     margin-inline: auto;
-    padding-inline: var(--site-shell-gutter);
+    padding-inline: 0;
 
     height: 100%;
 
@@ -164,6 +161,10 @@ TODO: dropdown menu z-index adjustment: not in the same level as background
     display: flex;
     align-items: center;
     gap: var(--navbar-button-gap);
+  }
+
+  .nav-utilities > button:last-of-type {
+    padding-inline-end: 0;
   }
 
   a,
@@ -188,6 +189,11 @@ TODO: dropdown menu z-index adjustment: not in the same level as background
     cursor: pointer;
 
     transition: color 120ms ease;
+  }
+
+  /* ensure the first button aligns to the shell width edge */
+  .nav-links > a:first-child {
+    padding-inline-start: 0;
   }
 
   a:hover,
@@ -256,6 +262,10 @@ TODO: dropdown menu z-index adjustment: not in the same level as background
     cursor: pointer;
 
     transition: background-color 90ms ease-out;
+  }
+
+  .dropdown-item[aria-current="true"] .dropdown-check {
+    visibility: visible;
   }
 
   .dropdown-item:hover {

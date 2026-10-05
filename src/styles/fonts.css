@@ -15,10 +15,18 @@
 }
 
 @font-face {
-    font-family: "Sylvarium Georgia";
-    src: url("../assets/fonts/georgia/Georgia.woff2") format("woff2");
+    font-family: "Sylvarium Source Serif 4";
+    src: url("../assets/fonts/source-serif-4/source-serif-4-variable.woff2") format("woff2");
     font-style: normal;
-    font-weight: 400;
+    font-weight: 200 900;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Sylvarium Source Serif 4";
+    src: url("../assets/fonts/source-serif-4/source-serif-4-italic-variable.woff2") format("woff2");
+    font-style: italic;
+    font-weight: 200 900;
     font-display: swap;
 }
 
@@ -40,10 +48,18 @@
 }
 
 @font-face {
-    font-family: "Sylvarium Hiragino Sans";
-    src: url("../assets/fonts/hiragino/hiragino-sans-w3.woff2") format("woff2");
+    font-family: "Sylvarium Hiragino Sans GB";
+    src: url("../assets/fonts/hiragino/hiragino-sans-gb-w3.woff2") format("woff2");
     font-style: normal;
     font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Sylvarium Hiragino Sans GB";
+    src: url("../assets/fonts/hiragino/hiragino-sans-gb-w6.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 600;
     font-display: swap;
 }
 

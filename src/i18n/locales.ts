@@ -24,3 +24,8 @@ export function requireRouteLocale(
 
   return locale;
 }
+
+export const localeLabels = {
+  "en-au": "English (AU)",
+  "zh-hans": "中文 (简体)",
+} satisfies Record<RouteLocale, string>;

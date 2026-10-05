@@ -26,9 +26,9 @@
 
 
   /* Fonts */
-  --font-content: "Sylvarium Georgia", "Sylvarium STZhongsong", Georgia, serif;
+  --font-content: "Sylvarium Source Serif 4", "Sylvarium STZhongsong", serif;
   --font-ui: "Sylvarium Myriad Pro", "Sylvarium MHei PRC", sans-serif;
-  --font-sans-secondary: "Sylvarium IBM Plex Sans", "Sylvarium Hiragino Sans", sans-serif;
+  --font-sans-secondary: "Sylvarium IBM Plex Sans", "Sylvarium Hiragino Sans GB", sans-serif;
   --font-mono: "Sylvarium IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 
   /* NavBar */
