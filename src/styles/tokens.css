@@ -57,10 +57,10 @@
   --navbar-button-min-width: 0px;
   --navbar-utility-min-width: 0px;
   --navbar-utility-end-padding: 0px;
-  --navbar-utility-justify: center;
+  --navbar-utility-justify: flex-end;
   --navbar-icon-size: 18px;
   --navbar-icon-stroke-width: 1.7;
-  --navbar-menu-max-width: none;
+  --navbar-menu-max-width: calc(100vw - var(--site-shell-gutter) - var(--site-shell-gutter));
   --navbar-menu-item-min-height: 2rem;
 
   /* HomeLayout */
@@ -84,18 +84,38 @@
 
 }
 
+/* For touch screens */
+@media (any-pointer: coarse) {
+    :root {
+        /* NavBar */
+        --navbar-button-min-width: 44px;
+        --navbar-utility-min-width: 44px;
+        --navbar-menu-item-min-height: 44px;
+    }
+}
+
 /* For narrow layout */
+/* Not in use at the moment, reserved for future use */
 @media (width < 600px) {
     :root {
 
     /* SiteBanner */
 
     /* NavBar */
-    --navbar-button-min-width: 44px;
-    --navbar-utility-min-width: 44px;
-    --navbar-utility-justify: flex-end;
-    --navbar-menu-max-width: calc(100vw - var(--site-shell-gutter) - var(--site-shell-gutter));
-    --navbar-menu-item-min-height: 44px;
+
+    /* HomeLayout */
+
+    }
+}
+
+/* For compact layout */
+/* Not in use at the moment, reserved for future use */
+@media (600px <= width < 1024px) {
+    :root {
+
+    /* SiteBanner */
+
+    /* NavBar */
 
     /* HomeLayout */
 
