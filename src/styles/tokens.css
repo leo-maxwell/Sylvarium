@@ -1,29 +1,21 @@
+/* Globally usable tokens, for normal PC layout */
 :root {
-  --color-page: #f3f1eb;
-  --color-text: #222320;
 
-  --color-glass: rgb(255 255 255 / 0.65);
-  --color-glass-hover: rgb(255 255 255 / 0.7);
-  --color-border: rgb(0 0 0 / 0.08);
-
-  --navbar-height: 3.75rem;
-  --content-width: 72rem;
-
-  --radius-sm: 0.5rem;
+  /* Unified color tokens */
+  --site-color-page: #f3f1eb;
+  --site-color-text: #222320;
 
   /* Unified width/height tokens */
-  --height-top-banner: 14rem;
-  /* unified horizontal width model parameters */
-  --site-banner-gutter: clamp(1.5rem, 5vw, 6rem);
-  --site-shell-max-width: 72rem;
-  --site-shell-gutter: 22px;
-  --site-reading-max-width: 48rem;
-  --site-reading-gutter: 1rem;
-
+    /* unified horizontal width model parameters */
+  --site-shell-max-width: 72rem; /* maximum width without gap */
+  --site-shell-gutter: 1rem; /* minimum gap on both sides */
+  --site-shell-width: min(var(--site-shell-max-width), calc(100% - var(--site-shell-gutter) - var(--site-shell-gutter))); /* real shell width, calculated */
+  --site-reading-max-width: 48rem; /* maximum width without gap */
+  --site-reading-gutter: 1rem; /* minimum gap on both sides */
+  --site-reading-width: min(var(--site-reading-max-width), calc(100% - var(--site-reading-gutter) - var(--site-reading-gutter))); /* real reading width, calculated */
 
   /* Unified spacing tokens */
   --spacing-btn-tiles: 16px;
-
 
   /* Fonts */
   --font-content: "Sylvarium Source Serif 4", "Sylvarium STZhongsong", serif;
@@ -31,12 +23,47 @@
   --font-sans-secondary: "Sylvarium IBM Plex Sans", "Sylvarium Hiragino Sans GB", sans-serif;
   --font-mono: "Sylvarium IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 
+  /* SiteBanner */
+  --sitebanner-gutter: clamp(1rem, calc(8vw - 2rem), 6rem);
+  --sitebanner-height: clamp(8rem, calc(5rem + 12.5vw), 20rem);
+  --sitebanner-image-position: absolute;
+  --sitebanner-image-height: 100%;
+  --sitebanner-image-object-position: right center;
+  --sitebanner-name-gap: 0.25rem;
+  --sitebanner-zhname-font-size: clamp(2rem, 5vw, 4rem);
+  --sitebanner-enname-font-size: clamp(1.125rem, 3vw, 2.5rem);
+  --sitebanner-enname-margin-inline: clamp(1rem, calc(4vw - 0.5rem), 3rem);
+  --sitebanner-enname-margin-block-end: 0px;
+  --sitebanner-frost-fade-width: clamp(5rem, 15vw, 10rem);
+  --sitebanner-frost-opacity: 0.3;
+  --sitebanner-frost-mask: linear-gradient(
+    to right,
+    rgb(0 0 0 / 1) 0%,
+    rgb(0 0 0 / 1) calc(100% - var(--sitebanner-frost-fade-width)),
+    rgb(0 0 0 / 0.96) calc(100% - var(--sitebanner-frost-fade-width) * 0.875),
+    rgb(0 0 0 / 0.84) calc(100% - var(--sitebanner-frost-fade-width) * 0.75),
+    rgb(0 0 0 / 0.68) calc(100% - var(--sitebanner-frost-fade-width) * 0.625),
+    rgb(0 0 0 / 0.5) calc(100% - var(--sitebanner-frost-fade-width) * 0.5),
+    rgb(0 0 0 / 0.32) calc(100% - var(--sitebanner-frost-fade-width) * 0.375),
+    rgb(0 0 0 / 0.16) calc(100% - var(--sitebanner-frost-fade-width) * 0.25),
+    rgb(0 0 0 / 0.04) calc(100% - var(--sitebanner-frost-fade-width) * 0.125),
+    rgb(0 0 0 / 0) 100%
+  );
+
   /* NavBar */
   --navbar-button-text-color: rgb(60 60 60);
   --navbar-button-gap: 36px;
   --navbar-button-font-size: 14px;
+  --navbar-button-min-width: 0px;
+  --navbar-utility-min-width: 0px;
+  --navbar-utility-end-padding: 0px;
+  --navbar-utility-justify: center;
   --navbar-icon-size: 18px;
   --navbar-icon-stroke-width: 1.7;
+  --navbar-menu-max-width: none;
+  --navbar-menu-item-min-height: 2rem;
+
+  /* HomeLayout */
 
   /* From apple.com */
   --apple-navbar-height: 44px;
@@ -55,4 +82,22 @@
   /* From Apple */
   --apple-corner-radius: 16px;
 
+}
+
+/* For narrow layout */
+@media (width < 600px) {
+    :root {
+
+    /* SiteBanner */
+
+    /* NavBar */
+    --navbar-button-min-width: 44px;
+    --navbar-utility-min-width: 44px;
+    --navbar-utility-justify: flex-end;
+    --navbar-menu-max-width: calc(100vw - var(--site-shell-gutter) - var(--site-shell-gutter));
+    --navbar-menu-item-min-height: 44px;
+
+    /* HomeLayout */
+
+    }
 }

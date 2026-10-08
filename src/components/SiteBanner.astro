@@ -1,24 +1,51 @@
 ---
-import { Image } from "astro:assets";
+import { prepareBannerImage } from "@/lib/images";
 import landscape from "@/assets/images/banner/home-landscape.png";
+import compactLandscape from "@/assets/images/banner/home-compact-landscape.png";
+import narrowLandscape from "@/assets/images/banner/home-narrow-landscape.png";
+
+const [normalImage, compactImage, narrowImage] = await Promise.all([
+  prepareBannerImage(landscape),
+  prepareBannerImage(compactLandscape),
+  prepareBannerImage(narrowLandscape),
+]);
 ---
 
 <!--
 TODO: shadow improvement: use visually smooth gradient transition, refer to Google MD
-TODO: fix the blog name font bug
 -->
 <header class="site-banner">
-  <Image
-    class="banner-image"
-    src={landscape}
-    alt=""
-    loading="eager"
-    fetchpriority="high"
-  />
-
-  <div class="banner-frost" aria-hidden="true"></div>
+  <picture>
+    <!-- KEEP THE NUMBER ALIGNED WITH THE NARROW AND COMPACT LAYOUT BREAKPOINT IN TOKENS.CSS -->
+    <source
+      media="(width < 600px)"
+      srcset={narrowImage.src}
+      type={narrowImage.type}
+      width={narrowImage.width}
+      height={narrowImage.height}
+    />
+    <source
+      media="(600px <= width < 1024px)"
+      srcset={compactImage.src}
+      type={compactImage.type}
+      width={compactImage.width}
+      height={compactImage.height}
+    />
+    <img
+      class="banner-image"
+      src={normalImage.src}
+      width={normalImage.width}
+      height={normalImage.height}
+      alt=""
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+  </picture>
 
   <div class="banner-content">
+    <div class="banner-frost" aria-hidden="true"></div>
+
     <p class="banner-name-zh" lang="zh-Hans">青枝录</p>
     <p class="banner-name-en" lang="en">Sylvarium</p>
   </div>
@@ -29,65 +56,71 @@ TODO: fix the blog name font bug
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    height: auto;
-    aspect-ratio: auto;
-    background: var(--color-page);
+    height: var(--sitebanner-height);
+    background: var(--site-color-page);
   }
   .banner-image {
-    position: relative;
+    position: var(--sitebanner-image-position);
     display: block;
     inset: 0;
     z-index: 0;
     width: 100%;
-    height: auto;
+    height: var(--sitebanner-image-height);
     object-fit: cover;
-    object-position: center;
+    object-position: var(--sitebanner-image-object-position);
   }
   .banner-frost {
     position: absolute;
-    inset: 0;
-    z-index: 1;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inset-inline-end: calc(-1 * var(--sitebanner-frost-fade-width));
+    z-index: 0;
     pointer-events: none;
-    background: rgb(243 241 235 / 0.3);
+    background: rgb(243 241 235 / var(--sitebanner-frost-opacity));
     -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
 
-    -webkit-mask-image: linear-gradient(
-      to right,
-      black 0%,
-      black 20%,
-      transparent 38%
-    );
-    mask-image: linear-gradient(to right, black 0%, black 20%, transparent 38%);
+    -webkit-mask-image: var(--sitebanner-frost-mask);
+    mask-image: var(--sitebanner-frost-mask);
   }
   .banner-content {
     position: absolute;
-    inset: 0;
+    inset-block: 0;
+    inset-inline-start: 0;
     z-index: 2;
-    width: 100%;
-    max-width: none;
+
+    width: max-content;
     height: 100%;
-    margin-inline: 0;
-    padding-inline: var(--site-banner-gutter);
+    margin: 0;
+    padding-inline: var(--sitebanner-gutter) 0;
+    box-sizing: border-box;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    color: var(--color-text);
+    gap: var(--sitebanner-name-gap);
+
+    color: var(--site-color-text);
   }
   .banner-name-en {
-    margin: 0 3rem 0.6rem;
+    position: relative;
+    z-index: 1;
+    margin-block: 0 var(--sitebanner-enname-margin-block-end);
+    margin-inline: var(--sitebanner-enname-margin-inline) 0;
     font-family: var(--font-sans-secondary);
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-size: var(--sitebanner-enname-font-size);
     letter-spacing: 0.18rem;
     text-shadow:
       0 1px 2px rgb(20 30 25 / 0.14),
       0 4px 12px rgb(20 30 25 / 0.08);
   }
   .banner-name-zh {
+    position: relative;
+    z-index: 1;
     margin: 0;
     font-family: var(--font-sans-secondary);
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: var(--sitebanner-zhname-font-size);
     font-weight: 400;
     line-height: 1.2;
     letter-spacing: 0.1rem;

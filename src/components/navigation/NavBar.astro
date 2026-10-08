@@ -141,10 +141,10 @@ TODO: add dark theme support
   }
 
   .navbar-inner {
-    width: 100%;
-    max-width: var(--site-shell-max-width);
+    width: var(--site-shell-width);
     margin-inline: auto;
     padding-inline: 0;
+    box-sizing: border-box;
 
     height: 100%;
 
@@ -162,8 +162,18 @@ TODO: add dark theme support
     gap: var(--navbar-button-gap);
   }
 
+  .nav-links > a {
+    min-width: var(--navbar-button-min-width);
+    justify-content: flex-start;
+  }
+
+  .nav-utilities > button {
+    min-width: var(--navbar-utility-min-width);
+    justify-content: var(--navbar-utility-justify);
+  }
+
   .nav-utilities > button:last-of-type {
-    padding-inline-end: 0;
+    padding-inline-end: var(--navbar-utility-end-padding);
   }
 
   a,
@@ -208,9 +218,11 @@ TODO: add dark theme support
 
   .dropdown-menu {
     min-width: 10rem;
+    max-width: var(--navbar-menu-max-width);
+    box-sizing: border-box;
     margin: auto;
 
-    color: var(--color-text);
+    color: var(--site-color-text);
     background: rgb(220 220 220 / 0.6);
     backdrop-filter: var(--apple-navbar-backdrop);
     -webkit-backdrop-filter: var(--apple-navbar-backdrop);
@@ -252,7 +264,7 @@ TODO: add dark theme support
   }
 
   .dropdown-item {
-    min-height: 2rem;
+    min-height: var(--navbar-menu-item-min-height);
     padding-inline: 0.5rem;
     display: grid;
     grid-template-columns: 1fr 1rem;
@@ -268,7 +280,6 @@ TODO: add dark theme support
   }
 
   .dropdown-item:hover {
-    /*background: var(--color-glass-hover);*/
     background: rgb(255 255 255 / 0.25);
   }
 

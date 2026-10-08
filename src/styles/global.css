@@ -6,8 +6,8 @@
 
 body {
     margin: 0;
-    background: var(--color-page);
-    color: var(--color-text);
+    background: var(--site-color-page);
+    color: var(--site-color-text);
 }
 
 a:focus-visible,
